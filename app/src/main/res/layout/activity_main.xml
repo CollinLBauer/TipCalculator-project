@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_blue"
+    android:background=""
     tools:context=".MainActivity">
 
 
@@ -23,17 +23,85 @@
         app:layout_constraintVertical_bias="0.1"
         />
 
-    <Button
+    <RelativeLayout
+        android:id="@+id/calculator_container_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="20sp"
-        android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.5"
+        >
+
+        <EditText
+            android:id="@+id/edit_base_cost"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_base_cost"
+            android:inputType="numberDecimal"
+            />
+
+        <RadioGroup
+            android:id="@+id/radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edit_base_cost"
+            >
+            <RadioButton
+                android:id="@+id/radio_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_10"
+                />
+            <RadioButton
+                android:id="@+id/radio_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_15"
+                />
+            <RadioButton
+                android:id="@+id/radio_20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/radio_20"
+                />
+            <RadioButton
+                android:id="@+id/radio_custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <EditText
+                android:id="@+id/edit_radio_custom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/radio_custom"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="-47.5sp"
+                android:layout_marginStart="30sp"
+                />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button_calculate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_calculate"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_below="@id/radio"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View history"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_container_layout"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
