@@ -8,8 +8,8 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
-        android:scaleX="1.2"
-        android:scaleY="1.2"
+        android:scaleX="1.4"
+        android:scaleY="1.4"
         android:id="@+id/calculator_container_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,15 +20,24 @@
         app:layout_constraintVertical_bias="0.4"
         >
 
-
-        <RelativeLayout
-            android:id="@+id/layout_base_cost"
+        <TextView
+            android:id="@+id/label_base"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16sp"
+            android:layout_marginTop="20sp"
+            android:text="@string/label_base_price"
+            android:layout_centerHorizontal="true"
+            />
+
+        <RelativeLayout
+            android:id="@+id/layout_base_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:layout_below="@id/label_base"
             >
             <TextView
-                android:id="@+id/edit_currency"
+                android:id="@+id/base_currency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/currency"
@@ -43,72 +52,115 @@
                 android:textSize="20sp"
                 android:hint="@string/enter_base_cost"
                 android:inputType="numberDecimal"
-                android:layout_toEndOf="@id/edit_currency"
+                android:layout_toEndOf="@id/base_currency"
                 />
         </RelativeLayout>
 
-        <RadioGroup
-            android:id="@+id/radio_group"
+        <RelativeLayout
+            android:id="@+id/layout_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/layout_base_cost"
+            android:layout_below="@id/layout_base_price"
             >
-            <RadioButton
-                android:id="@+id/radio_10"
+            <TextView
+                android:id="@+id/label_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/radio_10"
-                android:textSize="20sp"
-                android:checked="false"
+                android:text="@string/label_tip_amount"
+                android:layout_centerHorizontal="true"
                 />
-            <RadioButton
-                android:id="@+id/radio_15"
+
+            <RadioGroup
+                android:id="@+id/radio_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/radio_15"
-                android:textSize="20sp"
-                android:checked="true"
-                />
-            <RadioButton
-                android:id="@+id/radio_20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/radio_20"
-                android:textSize="20sp"
-                android:checked="false"
-                />
-            <RadioButton
-                android:id="@+id/radio_custom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                />
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-47sp"
-                android:layout_marginStart="29.5sp">
-                <EditText
-                    android:id="@+id/edit_custom"
+                android:layout_below="@id/label_tip"
+                >
+                <RadioButton
+                    android:id="@+id/radio_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/radio_10"
                     android:textSize="20sp"
-                    android:hint="@string/radio_custom"
-                    android:autofillHints="percent"
-                    android:maxLength="6"
-                    android:inputType="none"
+                    android:checked="false"
                     />
-                <TextView
+                <RadioButton
+                    android:id="@+id/radio_15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="%"
+                    android:text="@string/radio_15"
                     android:textSize="20sp"
-                    android:layout_toEndOf="@+id/edit_custom"
-                    android:layout_centerVertical="true"
-                    tools:ignore="HardcodedText"
+                    android:checked="true"
                     />
-            </RelativeLayout>
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/radio_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_20"
+                    android:textSize="20sp"
+                    android:checked="false"
+                    />
+                <RadioButton
+                    android:id="@+id/radio_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-45sp"
+                    android:layout_marginStart="29.5sp">
+                    <EditText
+                        android:id="@+id/edit_custom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:hint="@string/radio_custom"
+                        android:autofillHints="percent"
+                        android:maxLength="6"
+                        android:inputType="none"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%"
+                        android:textSize="20sp"
+                        android:layout_toEndOf="@+id/edit_custom"
+                        android:layout_centerVertical="true"
+                        tools:ignore="HardcodedText"
+                        />
+                </RelativeLayout>
+            </RadioGroup>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_people"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/layout_tip"
+            android:layout_below="@id/layout_base_price"
+            >
+            <TextView
+                android:id="@+id/label_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/people_number"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                />
+            <EditText
+                android:id="@+id/edit_people"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="40sp"
+                android:hint="@string/zero"
+                android:inputType="number"
+                android:maxLength="3"
+                android:layout_below="@id/label_people"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
 
         <Button
             android:id="@+id/button_calculate"
@@ -118,21 +170,21 @@
             android:textSize="20sp"
             android:textAlignment="center"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/radio_group"
-            android:layout_marginTop="16sp"
+            android:layout_below="@id/layout_tip"
+            android:layout_marginTop="10sp"
             />
 
+        <Button
+            android:id="@+id/button_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:layout_marginTop="10sp"
+            android:text="@string/view_history"
+            android:layout_below="@id/button_calculate"
+            android:layout_centerHorizontal="true"
+            />
     </RelativeLayout>
-
-    <Button
-        android:id="@+id/button_history"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_history"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculator_container_layout"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

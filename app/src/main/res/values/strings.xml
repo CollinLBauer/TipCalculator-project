@@ -9,5 +9,9 @@
     <string name="tip_button_back">Back to calculator</string>
     <string name="currency">$</string>
     <string name="view_history">View history</string>
-    <string name="tip_label">Tip:</string>
+    <string name="tip_label">"Tip divvied for %d people"</string>
+    <string name="people_number">Number of People</string>
+    <string name="zero">0</string>
+    <string name="label_base_price">Base price</string>
+    <string name="label_tip_amount">Tip amount</string>
 </resources>

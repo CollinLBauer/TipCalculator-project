@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -27,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditText customTipEdit;
     Button calculateButton;
     Button historyButton;
+    EditText personEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
         customTipEdit = findViewById(R.id.edit_custom);
         calculateButton = findViewById(R.id.button_calculate);
         historyButton = findViewById(R.id.button_history);
-
+        personEdit = findViewById(R.id.edit_people);
         basePriceEdit.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
 
 
         // setup EditText input types and filters
@@ -80,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
-            if (basePrice <= 0) {
-                Toast.makeText(context, "Price must be greater than 0.", Toast.LENGTH_SHORT).show();
+            if (basePrice < 1) {
+                Toast.makeText(context, "Price must be at least $1.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             intentOut.putExtra("basePrice", basePrice);
 
-            // get tip
+            // get tip amount
             if (radioGroup.getCheckedRadioButtonId() == R.id.radio_10) {
                 intentOut.putExtra("tipAmount", (double) 10);
             } else if (radioGroup.getCheckedRadioButtonId() == R.id.radio_15) {
@@ -105,8 +105,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (tipAmount <= 0) {
-                    Toast.makeText(context, "Tip amount must be greater than 0.", Toast.LENGTH_SHORT).show();
+                if (tipAmount < 1) {
+                    Toast.makeText(context, "Tip amount must be at least 1%.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -117,6 +117,21 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
 
+            // get the number of people
+            int numPeople;
+            try {
+                numPeople = Integer.parseInt(personEdit.getText().toString());
+            } catch (Exception e) {
+                Toast.makeText(context, "Missing people count.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (numPeople < 1) {
+                Toast.makeText(context, "Must be at least 1 person.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            intentOut.putExtra("numPeople", numPeople);
+
+            // start the tip activity
             startActivity(intentOut);
 
         });
