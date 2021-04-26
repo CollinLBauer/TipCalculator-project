@@ -6,23 +6,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".TipActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-    <Button
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/"
-        />
+        app:layout_constraintVertical_bias="0.35"
+        >
+        <TextView
+            android:id="@+id/display_tip_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:text="@string/tip_label"
+            android:layout_marginRight="20sp"
+            />
+
+        <TextView
+            android:id="@+id/display_tip_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:text="@string/currency"
+            android:layout_toEndOf="@id/display_tip_label"
+            />
+
+        <TextView
+            android:id="@+id/display_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:layout_toEndOf="@id/display_tip_currency"
+            />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/sum_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7"
+        >
+        <TextView
+            android:id="@+id/sum_plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="24sp"
+            android:layout_below="@id/sum_base"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/currency"
+            android:textSize="24sp"
+            android:layout_below="@id/sum_divider"
+            android:layout_toStartOf="@id/sum_final"
+            />
+
+        <TextView
+            android:id="@+id/sum_base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/sum_divider"
+            android:layout_toEndOf="@id/sum_plus"
+            android:textSize="24sp"
+            android:textAlignment="textEnd"
+            android:text="0.00"
+            />
+        <TextView
+            android:id="@+id/sum_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/sum_divider"
+            android:layout_below="@+id/sum_base"
+            android:layout_toEndOf="@id/sum_plus"
+            android:textSize="24sp"
+            android:textAlignment="textEnd"
+            android:text="0.00"
+            />
+        <ImageView
+            android:id="@+id/sum_divider"
+            android:layout_width="wrap_content"
+            android:minWidth="120sp"
+            android:layout_height="4sp"
+            android:src="@color/black"
+            android:layout_below="@id/sum_tip"
+            />
+
+
+        <TextView
+            android:id="@+id/sum_final"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/sum_divider"
+            android:layout_below="@+id/sum_divider"
+            android:textSize="24sp"
+            android:textAlignment="textEnd"
+            android:text="0.00"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tip_button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.925"
+        android:background="@drawable/ico_back_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="0sp"
+        android:paddingEnd="20sp"
+        >
+        <ImageView
+            android:id="@+id/tip_button_arrow"
+            android:layout_width="48sp"
+            android:layout_height="48sp"
+            android:foreground="@drawable/ico_back_foreground"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tip_button_back"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:layout_toEndOf="@+id/tip_button_arrow"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
